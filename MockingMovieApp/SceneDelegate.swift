@@ -6,47 +6,146 @@
 //
 
 import UIKit
+import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    
+    var coreDataService: CoreDataStore {
+        try! CoreDataStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("moviedb-store-sqlite"))
+    }
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        print(NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("moviedb-store-sqlite").absoluteString)
+        let localFeedStore = LocalFeedService(store: self.coreDataService)
+        let localDataStore = LocalImageDataService(store: self.coreDataService)
+        
+
+        let apiService = FeedLoaderWithFallback(primary: FeedLoaderCacheDecorator(decoratee: makeRemoteLoader(), cache: localFeedStore),
+                                                fallback: localFeedStore)
+        
+        let imageDataLoader = ImageDataLoaderWithFallback(primary: localDataStore,
+                                                          fallback: ImageDataLoaderCacheDecorator(
+                                                            decoratee: makeRemoteImageDataLoader(),
+                                                            cache: localDataStore))
+        
+        let refreshViewController = RefreshViewController(loader: apiService)
+        let loadMoreController = LoadMoreCellController(loader: makeRemoteLoader())
+        
+        let vc = HomeViewController(refreshViewController: refreshViewController,
+                                    loadMoreController: loadMoreController)
+        
+        refreshViewController.onFeedLoaded = { movies in
+            let controllers = movies.map { MovieCellController(loader: imageDataLoader, item: $0)}
+            vc.set(controllers)
+        }
+        
+        loadMoreController.onPaging = { movies in
+            let controllers = movies.map { MovieCellController(loader: imageDataLoader, item: $0)}
+            vc.append(controllers)
+        }
+        window?.rootViewController = UINavigationController(rootViewController: vc)
+        window?.makeKeyAndVisible()
+        
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+    
+    func makeRemoteLoader() -> FeedLoader {
+        let apiService = APIService(client: URLSessionHTTPClient())
+        return apiService
     }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+    
+    func makeRemoteImageDataLoader() -> ImageDataLoader {
+        let apiService = APIService(client: URLSessionHTTPClient())
+        return apiService
     }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
-    }
-
-
+    
 }
 
+class FeedLoaderCacheDecorator: FeedLoader {
+    private let decoratee: FeedLoader
+    private let cache: FeedCache
+    
+    init(decoratee: FeedLoader, cache: FeedCache) {
+        self.decoratee = decoratee
+        self.cache = cache
+    }
+    
+    func fetchMovies(page: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        decoratee.fetchMovies(page: page) { [weak self] result in
+            if let movies = try? result.get() {
+                self?.cache.save(movies, completion: { _ in })
+            }
+            completion(result)
+        }
+    }
+}
+
+class ImageDataLoaderCacheDecorator: ImageDataLoader {
+    
+    private let decoratee: ImageDataLoader
+    private let cache: FeedImageDataCache
+    
+    init(decoratee: ImageDataLoader, cache: FeedImageDataCache) {
+        self.decoratee = decoratee
+        self.cache = cache
+    }
+    
+    func loadImageData(url: URL, completion: @escaping (Result<Data, Error>) -> Void) -> ImageDataLoaderTask {
+        decoratee.loadImageData(url: url) { [weak self] result in
+            completion(result.map { data in
+                self?.cache.save(data, for: url, completion: { _ in })
+                return data
+            })
+        }
+    }
+}
+
+class FeedLoaderWithFallback: FeedLoader {
+    private let primary: FeedLoader
+    private let fallback: FeedLoader
+    
+    init(primary: FeedLoader, fallback: FeedLoader) {
+        self.primary = primary
+        self.fallback = fallback
+    }
+    
+    func fetchMovies(page: Int, completion: @escaping (Result<[Movie], Error>) -> Void) {
+        self.primary.fetchMovies(page: page) { result in
+            switch result {
+            case .success(let movies):
+                completion(.success(movies))
+            case .failure:
+                self.fallback.fetchMovies(page: page, completion: completion)
+            }
+        }
+    }
+}
+
+class ImageDataLoaderWithFallback: ImageDataLoader {
+    
+    let primary: ImageDataLoader
+    let fallback: ImageDataLoader
+    
+    init(primary: ImageDataLoader, fallback: ImageDataLoader) {
+        self.primary = primary
+        self.fallback = fallback
+    }
+
+    func loadImageData(url: URL, completion: @escaping (Result<Data, Error>) -> Void) -> ImageDataLoaderTask {
+        self.primary.loadImageData(url: url) { result in
+            switch result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure:
+                _ = self.fallback.loadImageData(url: url, completion: completion)
+            }
+        }
+    }
+}

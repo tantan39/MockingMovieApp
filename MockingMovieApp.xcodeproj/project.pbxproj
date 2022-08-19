@@ -7,23 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B40E5F0628AD925F00028982 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F0528AD925F00028982 /* URLSessionHTTPClient.swift */; };
+		B40E5F0828AD928200028982 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F0728AD928200028982 /* Constant.swift */; };
+		B40E5F0B28ADD46100028982 /* ImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F0A28ADD46100028982 /* ImageDataLoader.swift */; };
+		B40E5F0D28AE839D00028982 /* MovieCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F0C28AE839D00028982 /* MovieCellController.swift */; };
+		B40E5F0F28AE858C00028982 /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F0E28AE858C00028982 /* LoadMoreCell.swift */; };
+		B40E5F1128AE8FE400028982 /* LoadMoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F1028AE8FE400028982 /* LoadMoreCellController.swift */; };
+		B40E5F1328AE919A00028982 /* RefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F1228AE919A00028982 /* RefreshViewController.swift */; };
+		B40E5F1528AF171B00028982 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F1428AF171B00028982 /* FeedCache.swift */; };
+		B40E5F1728AF175D00028982 /* LocalFeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F1628AF175D00028982 /* LocalFeedService.swift */; };
+		B40E5F1928AF18A800028982 /* CoreData+FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F1828AF18A800028982 /* CoreData+FeedStore.swift */; };
+		B40E5F1B28AF18D500028982 /* CoreData+FeedImageDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E5F1A28AF18D500028982 /* CoreData+FeedImageDataStore.swift */; };
 		B46DC41028A4806E002802C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC40F28A4806E002802C5 /* AppDelegate.swift */; };
 		B46DC41228A4806E002802C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC41128A4806E002802C5 /* SceneDelegate.swift */; };
-		B46DC41428A4806E002802C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC41328A4806E002802C5 /* ViewController.swift */; };
+		B46DC41428A4806E002802C5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC41328A4806E002802C5 /* HomeViewController.swift */; };
 		B46DC41728A4806E002802C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46DC41528A4806E002802C5 /* Main.storyboard */; };
 		B46DC41928A48070002802C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46DC41828A48070002802C5 /* Assets.xcassets */; };
 		B46DC41C28A48070002802C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46DC41A28A48070002802C5 /* LaunchScreen.storyboard */; };
+		B46DC42628A480AA002802C5 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC42528A480AA002802C5 /* FeedLoader.swift */; };
+		B46DC42828A48335002802C5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC42728A48335002802C5 /* APIService.swift */; };
+		B46DC42B28A494AA002802C5 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC42A28A494AA002802C5 /* MovieCell.swift */; };
+		B46DC42D28A53D84002802C5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC42C28A53D84002802C5 /* UIView+Extension.swift */; };
+		B46DC42F28A545B5002802C5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC42E28A545B5002802C5 /* Movie.swift */; };
+		B46DC43128A55651002802C5 /* FeedImageDataCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC43028A55651002802C5 /* FeedImageDataCache.swift */; };
+		B46DC43328A556DD002802C5 /* LocalImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC43228A556DD002802C5 /* LocalImageDataService.swift */; };
+		B46DC43628A56646002802C5 /* MovieImageStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B46DC43428A56646002802C5 /* MovieImageStore.xcdatamodeld */; };
+		B46DC43928A566BD002802C5 /* ManageMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC43728A566BD002802C5 /* ManageMovie.swift */; };
+		B46DC43C28A5676C002802C5 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46DC43B28A5676C002802C5 /* CoreDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B40E5F0528AD925F00028982 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		B40E5F0728AD928200028982 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		B40E5F0A28ADD46100028982 /* ImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataLoader.swift; sourceTree = "<group>"; };
+		B40E5F0C28AE839D00028982 /* MovieCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCellController.swift; sourceTree = "<group>"; };
+		B40E5F0E28AE858C00028982 /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
+		B40E5F1028AE8FE400028982 /* LoadMoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCellController.swift; sourceTree = "<group>"; };
+		B40E5F1228AE919A00028982 /* RefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshViewController.swift; sourceTree = "<group>"; };
+		B40E5F1428AF171B00028982 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
+		B40E5F1628AF175D00028982 /* LocalFeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedService.swift; sourceTree = "<group>"; };
+		B40E5F1828AF18A800028982 /* CoreData+FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+FeedStore.swift"; sourceTree = "<group>"; };
+		B40E5F1A28AF18D500028982 /* CoreData+FeedImageDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+FeedImageDataStore.swift"; sourceTree = "<group>"; };
 		B46DC40C28A4806E002802C5 /* MockingMovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MockingMovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46DC40F28A4806E002802C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46DC41128A4806E002802C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B46DC41328A4806E002802C5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B46DC41328A4806E002802C5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B46DC41628A4806E002802C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B46DC41828A48070002802C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B46DC41B28A48070002802C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B46DC41D28A48070002802C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B46DC42528A480AA002802C5 /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
+		B46DC42728A48335002802C5 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		B46DC42A28A494AA002802C5 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		B46DC42C28A53D84002802C5 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		B46DC42E28A545B5002802C5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		B46DC43028A55651002802C5 /* FeedImageDataCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataCache.swift; sourceTree = "<group>"; };
+		B46DC43228A556DD002802C5 /* LocalImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalImageDataService.swift; sourceTree = "<group>"; };
+		B46DC43528A56646002802C5 /* MovieImageStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieImageStore.xcdatamodel; sourceTree = "<group>"; };
+		B46DC43728A566BD002802C5 /* ManageMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMovie.swift; sourceTree = "<group>"; };
+		B46DC43B28A5676C002802C5 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +79,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B40E5F0328AD91E600028982 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B46DC43728A566BD002802C5 /* ManageMovie.swift */,
+				B40E5F1828AF18A800028982 /* CoreData+FeedStore.swift */,
+				B40E5F1A28AF18D500028982 /* CoreData+FeedImageDataStore.swift */,
+				B46DC43B28A5676C002802C5 /* CoreDataStore.swift */,
+				B46DC43428A56646002802C5 /* MovieImageStore.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		B40E5F0428AD923700028982 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				B40E5F0528AD925F00028982 /* URLSessionHTTPClient.swift */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
+		B40E5F0928AD92F100028982 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B46DC42A28A494AA002802C5 /* MovieCell.swift */,
+				B40E5F0C28AE839D00028982 /* MovieCellController.swift */,
+				B40E5F0E28AE858C00028982 /* LoadMoreCell.swift */,
+				B40E5F1028AE8FE400028982 /* LoadMoreCellController.swift */,
+				B40E5F1228AE919A00028982 /* RefreshViewController.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B46DC40328A4806E002802C5 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +130,52 @@
 		B46DC40E28A4806E002802C5 /* MockingMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				B46DC42328A48079002802C5 /* Domain */,
+				B46DC42428A48083002802C5 /* Infrastructure */,
+				B46DC42928A49498002802C5 /* UI */,
 				B46DC40F28A4806E002802C5 /* AppDelegate.swift */,
 				B46DC41128A4806E002802C5 /* SceneDelegate.swift */,
-				B46DC41328A4806E002802C5 /* ViewController.swift */,
 				B46DC41528A4806E002802C5 /* Main.storyboard */,
 				B46DC41828A48070002802C5 /* Assets.xcassets */,
 				B46DC41A28A48070002802C5 /* LaunchScreen.storyboard */,
 				B46DC41D28A48070002802C5 /* Info.plist */,
 			);
 			path = MockingMovieApp;
+			sourceTree = "<group>";
+		};
+		B46DC42328A48079002802C5 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				B46DC42528A480AA002802C5 /* FeedLoader.swift */,
+				B40E5F0A28ADD46100028982 /* ImageDataLoader.swift */,
+				B46DC42E28A545B5002802C5 /* Movie.swift */,
+				B46DC43028A55651002802C5 /* FeedImageDataCache.swift */,
+				B40E5F1428AF171B00028982 /* FeedCache.swift */,
+				B40E5F0728AD928200028982 /* Constant.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		B46DC42428A48083002802C5 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				B40E5F0428AD923700028982 /* URLSession */,
+				B40E5F0328AD91E600028982 /* CoreData */,
+				B46DC42728A48335002802C5 /* APIService.swift */,
+				B46DC43228A556DD002802C5 /* LocalImageDataService.swift */,
+				B40E5F1628AF175D00028982 /* LocalFeedService.swift */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		B46DC42928A49498002802C5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B40E5F0928AD92F100028982 /* Cells */,
+				B46DC42C28A53D84002802C5 /* UIView+Extension.swift */,
+				B46DC41328A4806E002802C5 /* HomeViewController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +249,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B46DC41428A4806E002802C5 /* ViewController.swift in Sources */,
+				B40E5F1B28AF18D500028982 /* CoreData+FeedImageDataStore.swift in Sources */,
+				B40E5F1328AE919A00028982 /* RefreshViewController.swift in Sources */,
+				B46DC41428A4806E002802C5 /* HomeViewController.swift in Sources */,
+				B46DC42D28A53D84002802C5 /* UIView+Extension.swift in Sources */,
+				B40E5F0828AD928200028982 /* Constant.swift in Sources */,
+				B46DC42828A48335002802C5 /* APIService.swift in Sources */,
+				B40E5F0B28ADD46100028982 /* ImageDataLoader.swift in Sources */,
+				B46DC42B28A494AA002802C5 /* MovieCell.swift in Sources */,
+				B40E5F1528AF171B00028982 /* FeedCache.swift in Sources */,
+				B40E5F0F28AE858C00028982 /* LoadMoreCell.swift in Sources */,
+				B40E5F1728AF175D00028982 /* LocalFeedService.swift in Sources */,
+				B46DC43328A556DD002802C5 /* LocalImageDataService.swift in Sources */,
+				B40E5F1928AF18A800028982 /* CoreData+FeedStore.swift in Sources */,
+				B46DC43128A55651002802C5 /* FeedImageDataCache.swift in Sources */,
+				B46DC43C28A5676C002802C5 /* CoreDataStore.swift in Sources */,
+				B40E5F0D28AE839D00028982 /* MovieCellController.swift in Sources */,
+				B40E5F0628AD925F00028982 /* URLSessionHTTPClient.swift in Sources */,
 				B46DC41028A4806E002802C5 /* AppDelegate.swift in Sources */,
+				B46DC43928A566BD002802C5 /* ManageMovie.swift in Sources */,
+				B46DC43628A56646002802C5 /* MovieImageStore.xcdatamodeld in Sources */,
+				B40E5F1128AE8FE400028982 /* LoadMoreCellController.swift in Sources */,
+				B46DC42628A480AA002802C5 /* FeedLoader.swift in Sources */,
+				B46DC42F28A545B5002802C5 /* Movie.swift in Sources */,
 				B46DC41228A4806E002802C5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,9 +424,9 @@
 				INFOPLIST_FILE = MockingMovieApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,9 +452,9 @@
 				INFOPLIST_FILE = MockingMovieApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +490,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B46DC43428A56646002802C5 /* MovieImageStore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B46DC43528A56646002802C5 /* MovieImageStore.xcdatamodel */,
+			);
+			currentVersion = B46DC43528A56646002802C5 /* MovieImageStore.xcdatamodel */;
+			path = MovieImageStore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B46DC40428A4806E002802C5 /* Project object */;
 }
