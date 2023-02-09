@@ -11,7 +11,6 @@ import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Add feature 1
     // Add log
-    // Add new log
     var window: UIWindow?
     
     var coreDataService: CoreDataStore {
